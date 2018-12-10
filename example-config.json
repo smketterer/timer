@@ -1,0 +1,7 @@
+{
+  "url": "https://activecollab.example.com/api/v1",
+  "user": "example@example.com",
+  "password": "secretpassword",
+  "client_name": "Cli App",
+  "client_vendor": "Company Name"
+}

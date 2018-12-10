@@ -1,0 +1,172 @@
+body {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 100%;
+  background: #4f80ff;
+  font-size: 14px;
+  margin: 0;
+}
+#nav {
+  padding: 8px;
+  color: white;
+  & a {
+    color: white;
+    text-decoration: none;
+  }
+  a + a {
+    margin-left: 10px;
+  }
+  & a.router-link-exact-active {
+    font-weight: bold;
+    border-bottom: 2px solid;
+  }
+}
+.form {
+  padding: 6px;
+  border-radius: 4px;
+  background: white;
+  margin: 8px;
+  margin-top: 4px;
+
+  .el-input, .el-select {
+    width: 100%;
+  }
+  .el-checkbox {
+    margin-left: 4px;
+    margin-bottom: 10px;
+    margin-top: 8px;
+  }
+  .el-checkbox + .el-checkbox {
+    margin-left: 10px;
+  }
+  .el-checkbox__label {
+    padding-left: 6px;
+  }
+  .el-input, .el-select, .el-textarea {
+    margin-bottom: 4px;
+    & input, & select, & textarea {
+      background-image: linear-gradient(white,hsla(0,0%,93.3%,.33));
+    }
+  }
+  .el-button--default {
+    background-image: linear-gradient(#fff,hsla(0,0%,93.3%,.33));
+  }
+  .el-button {
+    margin-top: 10px;
+  }
+  .el-button--text {
+    margin-top: 0;
+    margin-bottom: 4px;
+    display: inline;
+    padding: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: left;
+    width: 100%;
+  }
+  .el-button--text-disabled {
+    color: #bbb !important;
+  }
+  .times {
+    & > div:first-of-type {
+      width: calc(50% - 3px);
+      margin-right: 6px;
+    }
+    & > div:last-of-type {
+      width: calc(50% - 3px);
+    }
+  }
+  .date-controls {
+    display: flex;
+    align-items: center;
+    & > * {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+    & > div {
+      margin: 0 6px;
+    }
+    & > button {
+      padding: 12px 10px;
+    }
+  }
+  .time-records {
+    &.el-loading-parent--relative {
+      min-height: 80px;
+    }
+    .el-card {
+      margin-top: 6px;
+      &:first-child {
+        margin-top: 8px;
+      }
+      & > .el-card__body {
+        padding: 10px;
+        & > span:first-of-type {
+          width: calc(100% - 40px);
+          display: inline-block;
+        }
+        & > span:last-of-type {
+          float: right;
+        }
+      }
+    }
+    .time-record--badges {
+      margin-top: 6px;
+      .el-tag + .el-tag {
+        margin-left: 4px;
+      }
+      .el-button {
+        float: right;
+        margin-top: 0;
+        padding: 3px;
+        // display: none;
+        opacity: 0;
+      }
+    }
+    .el-row {
+      margin-top: 8px;
+      .el-tag {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  }
+}
+.el-card:hover .time-record--badges .el-button {
+  // display: inline-block !important;
+  opacity: 1 !important;
+}
+.task-name {
+  float: left;
+}
+.task-controls {
+  float: right;
+  button {
+    border: none;
+    background: transparent;
+    padding: 5px;
+  }
+}
+.el-select-dropdown {
+  width: calc(100% - 22px);
+  min-width: 0 !important;
+}
+.el-select-dropdown__item {
+  padding: 0 10px;
+  height: auto;
+  line-height: 2.25;
+
+  &.selected {
+    font-weight: normal;
+  }
+
+  & > span:first-of-type {
+    max-width: calc(100% - 70px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+.el-popper {
+  transform: translateX(-3px);
+}
