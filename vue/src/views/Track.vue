@@ -100,12 +100,7 @@ export default {
           minutes = parseInt(timeString[1])
         }
         timeValue = hours + (minutes / 60)
-      }
-      else if (this.time.indexOf(".") == -1) {
-        // Minutes
-        timeValue = (this.time / 60)
-      }
-      else if (this.time.indexOf(".") !== -1) {
+      } else {
         // Hours
         timeValue = this.time
       }
