@@ -117,6 +117,9 @@ export default {
       this.date.setMilliseconds(0);
       this.date.setHours(0);
       eel.list_daily_time_records(this.date.getTime() / 1000)((val) => {
+        console.log(val)
+        console.log(this.date.getTime() / 1000)
+
         this.timeRecords = val
         this.loading = false
         // console.log(val)

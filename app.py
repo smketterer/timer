@@ -28,6 +28,7 @@ def authenticate():
     r = session.post(auth_url, data=data)
     try:
         token = r.json()['token']
+        # print(token)
         return token
     except:
         return False
@@ -102,6 +103,7 @@ def get_user():
     users = get_users()
     user = next(x for x in users if x['email'] == config['user'])
     message = get('/users/{}/'.format(user['id']))
+    # print(message)
     return message
 
 @eel.expose
@@ -153,9 +155,16 @@ def list_daily_time_records(date):
     user = next(x for x in users if x['email'] == config['user'])
     r = get_time_records(user['id'])
     time_records = r['time_records']
-    time_zone_seconds_offset = 3600 * 7
+    time_zone_seconds_offset = 3600 * 6
+    # @TODO: This seems to change sometimes, breaking everything.
+    # print(date - time_zone_seconds_offset)
+    # actual: 1557360000
+    # search: 1557356400
+    # difference: 3600
     daily_time_records = [x for x in time_records if x['record_date'] == date - time_zone_seconds_offset]
     return daily_time_records
 
 eel.init('web')
-eel.start('index.html', size=(400, 600))
+eel.start('index.html', size=(400, 600), options={
+    'port': 8888
+})
