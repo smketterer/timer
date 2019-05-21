@@ -7,6 +7,7 @@
       </span>
       <router-link to="/"><i class="el-icon-document"></i> Track Time</router-link>
       <router-link to="/time"><i class="el-icon-date"></i> View Time</router-link>
+      <!-- <router-link to="/reports"><i class="el-icon-s-data"></i> Reports</router-link> -->
     </div>
     <router-view/>
   </div>
