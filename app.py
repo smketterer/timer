@@ -155,13 +155,9 @@ def list_daily_time_records(date):
     user = next(x for x in users if x['email'] == config['user'])
     r = get_time_records(user['id'])
     time_records = r['time_records']
-    time_zone_seconds_offset = 3600 * 6
-    # @TODO: This seems to change sometimes, breaking everything.
-    # print(date - time_zone_seconds_offset)
-    # actual: 1557360000
-    # search: 1557356400
-    # difference: 3600
-    daily_time_records = [x for x in time_records if x['record_date'] == date - time_zone_seconds_offset]
+
+    # Adjusting for daylight savings time in MST/MDT.
+    daily_time_records = [x for x in time_records if x['record_date'] == date - 3600 * 6 or x['record_date'] == date - 3600 * 7]
     return daily_time_records
 
 eel.init('web')
