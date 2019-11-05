@@ -150,14 +150,14 @@ def create_time_record(project_id, task_id, job_type_id, date, time_value, billa
     return post(url, data)
 
 @eel.expose
-def list_daily_time_records(date):
+def list_daily_time_records(date, offset):
     users = get_users()
     user = next(x for x in users if x['email'] == config['user'])
     r = get_time_records(user['id'])
     time_records = r['time_records']
 
-    # Adjusting for daylight savings time in MST/MDT.
-    daily_time_records = [x for x in time_records if x['record_date'] == date - 3600 * 6 or x['record_date'] == date - 3600 * 7]
+    # Adjusting for current timezone.
+    daily_time_records = [x for x in time_records if abs(x['record_date'] - (date - offset)) <= 3600]
     return daily_time_records
 
 eel.init('web')

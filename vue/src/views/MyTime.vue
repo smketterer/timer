@@ -116,13 +116,12 @@ export default {
       this.date.setSeconds(0);
       this.date.setMilliseconds(0);
       this.date.setHours(0);
-      eel.list_daily_time_records(this.date.getTime() / 1000)((val) => {
-        console.log(val)
-        console.log(this.date.getTime() / 1000)
 
+      let offset = new Date().getTimezoneOffset() * 60
+
+      eel.list_daily_time_records(this.date.getTime() / 1000, offset)((val) => {
         this.timeRecords = val
         this.loading = false
-        // console.log(val)
       })
     },
     deleteTimeRecord(url) {
