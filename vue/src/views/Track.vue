@@ -43,7 +43,7 @@ export default {
       date: new Date(),
       time: "",
       summary: "",
-      billable: false,
+      billable: true,
       markCompleted: false,
       sending: false,
       url: ""
@@ -105,21 +105,27 @@ export default {
         timeValue = this.time
       }
       eel.create_time_record(this.project, this.task, this.jobType, this.date, timeValue, billable, this.summary)((val) => {
-        // Check response to make sure it's the proper response.
-        this.sending = false
-        this.project = ""
-        this.task = ""
-        this.jobType = ""
-        this.time = ""
-        this.billable = false
-        this.summary = ""
+        if (this.markCompleted) {
+          // Mark the task as complete.
+          eel.complete_task(this.task)((val) => {
+            this.sending = false
+            this.project = ""
+            this.task = ""
+            this.jobType = ""
+            this.time = ""
+            this.billable = false
+            this.summary = ""
+          })
+        } else {
+          this.sending = false
+          this.project = ""
+          this.task = ""
+          this.jobType = ""
+          this.time = ""
+          this.billable = false
+          this.summary = ""
+        }
       })
-      if (this.markCompleted) {
-        // Mark the task as complete.
-        eel.complete_task(this.task)((val) => {
-          // console.log(val)
-        })
-      }
     }
   }
 }
